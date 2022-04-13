@@ -1,6 +1,7 @@
 <!-- criado a partir do curso da Cod3r para aprendizado da biblioteca VueJS-->
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <script src="js/vue.min.js"></script>
@@ -10,26 +11,27 @@
 </head>
 
 <body>
-<div id="app">
-<h1> {{ title }}</h1>
-<div>
-    <input type="text" v-model="text" placeholder="Digite oa valor">
-</div>
-<div v-if="text" class="output">
-    <img :src="newQRcode" alt="QRCode">
-</div>
-</div>
+    <div id="app">
+        <h1> {{ title }}</h1>
+        <div>
+            <input type="text" v-model="text" placeholder="Digite oa valor">
+        </div>
+        <div v-if="text" class="output">
+            <img :src="newQRcode" alt="QRCode">
+        </div>
+    </div>
     <script>
         new Vue({
-            el:"#app",
+            el: "#app",
             data: {
                 title: "Gerador de QRCode",
                 text: "https://google.com.br",
-                qrcode : new QRious({ size : 300})
+                qrcode: new QRious({
+                    size: 300
+                })
             },
             computed: {
-                newQRcode()
-                {
+                newQRcode() {
                     this.qrcode.value = this.text
                     return this.qrcode.toDataURL()
                 }
